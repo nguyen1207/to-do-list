@@ -27,6 +27,10 @@ $(document).ready(() => {
       $(this).siblings(".check-is-done").show();
       $(this).siblings(".delete-task-btn").show();
       $(this).replaceWith(taskTitleElement);
+
+      $(taskTitleElement).click(function () {
+        $(this).siblings(".check-is-done").click();
+      })
       return;
     }
 
@@ -39,6 +43,9 @@ $(document).ready(() => {
     $(this).siblings(".delete-task-btn").show();
     $(this).replaceWith(taskTitleElement);
     
+    $(taskTitleElement).click(function () {
+      $(this).siblings(".check-is-done").click();
+    })
   }
 
   function createNewTask() {
@@ -58,6 +65,10 @@ $(document).ready(() => {
 
     $(this).parent().attr("id", taskId);
     $(this).replaceWith(taskTitleElement);
+
+    $(taskTitleElement).click(function () {
+      $(this).siblings(".check-is-done").click();
+    })
 
   }
 
