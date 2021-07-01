@@ -4,7 +4,7 @@ $(document).ready(() => {
   $("#add-task").click(createTaskElement);
 
   function createTaskElement() {
-    let addTaskForm = $(`<input type="text" placeholder="Task title">`);
+    let addTaskForm = $(`<input type="text" placeholder="Task title" spellcheck="false">`);
     let taskElement = $(`<div class="task"></div>`).append(addTaskForm);
 
     $("#tasks").append(taskElement);
@@ -62,23 +62,23 @@ $(document).ready(() => {
   }
 
   function createFunctionalityButtons(taskElement) {
-    let checkDoneTaskButton = $(`<button class="check-is-done"> not done</button>`);
-    let modifyTaskButton = $(`<button class="modify-task-btn">Modify</button>`);
-    let deleteTaskButton = $(`<button class="delete-task-btn">Delete</button>`);
+    let checkDoneTaskButton = $(`<button class="check-is-done" aria-label="check"><i class="far fa-circle"></i></button>`);
+    let modifyTaskButton = $(`<button class="modify-task-btn" aria-label="modify"><i class="fas fa-pen"></i></button>`);
+    let deleteTaskButton = $(`<button class="delete-task-btn" aria-label="delete"><i class="fas fa-trash"></i></button>`);
 
     $(modifyTaskButton).click(displayModifyTaskForm);
     $(deleteTaskButton).click(deleteTask);
     $(checkDoneTaskButton).click(toggleIsDone);
     
     $(taskElement)
-      .append(checkDoneTaskButton)
+      .prepend(checkDoneTaskButton)
       .append(modifyTaskButton)
       .append(deleteTaskButton);
   }
 
   function displayModifyTaskForm() {
     let currentTitle = $(this).siblings(".task-title").text();
-    let taskModifyForm = $(`<input type="text" name="${currentTitle}" value="${currentTitle}">`);
+    let taskModifyForm = $(`<input type="text" name="${currentTitle}" value="${currentTitle}" spellcheck="false">`);
 
     $(this).hide().siblings(".task-title").replaceWith(taskModifyForm);
     $(this).siblings(".check-is-done").hide();
@@ -97,9 +97,15 @@ $(document).ready(() => {
     tempDatabase.toggleTaskIsDone(taskId);
 
     if (task.isDone) {
-      $(this).text(" done");
+      $(this).html(`<i class="fas fa-check-circle"></i>`);
+      $(this)
+        .parent().addClass("done")
+        .children().not(".delete-task-btn").addClass("done");
     } else {
-      $(this).text(" not done");
+      $(this).html(`<i class="far fa-circle"></i>`);
+      $(this)
+        .parent().removeClass("done")
+        .children().not(".delete-task-btn").removeClass("done");
     }
   }
 

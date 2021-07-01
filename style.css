@@ -1,0 +1,104 @@
+html {
+	display: flex;
+	justify-content: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	text-align: center;
+	width: 900px;
+}
+
+button {
+	border: none;
+	background-color: none;
+}
+
+#add-task {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	background-color: green;
+	color: white;
+	font-size: 30px;
+	border-radius: 10px;
+	margin-left: auto;
+}
+
+#tasks {
+	margin-top: 30px;
+}
+
+.task, input {
+	display: flex;
+	height: 50px;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 10px;
+	background-color: rgb(230, 227, 223);
+	border-radius: 10px;
+}
+
+.task:hover {
+	background-color: rgb(196, 190, 190);
+}
+
+input {
+	height: 50px;
+	outline: none;
+	margin-top: 18px;
+}
+
+input:focus {
+	font-family: 'Open sans', sans-serif;
+	font-weight: bold;
+}
+
+.task-title {
+	display: flex;
+	align-items: center;
+	width: 90%;
+	height: 100%;
+	text-align: left;
+	font-weight: bold;
+	background-color: transparent !important;
+}
+
+.check-is-done {
+	font-size: 30px;
+	height: 100%;
+	background-color: transparent !important;
+	width: 80px;
+	
+}
+
+.modify-task-btn {
+	font-size: 20px;
+	height: 100%;
+	background-color: transparent !important;
+	width: 60px;
+}
+
+.delete-task-btn {
+	font-size: 20px;
+	height: 100%;
+	background-color: red;
+	color: white;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.delete-task-btn:hover {
+	background-color: rgb(179, 27, 27);
+}
+
+.done {
+	background-color: green;
+	color: white;
+}
+
+.done:hover, #add-task:hover {
+	background-color: rgb(19, 112, 19);
+}
